@@ -1,0 +1,17 @@
+
+net.peerCount
+admin.peers
+eth.getBalance(eth.accounts[0])
+eth.sendTransaction({to: "0x4D02A5534B2b0362fA720abCB2D139887028b7Bc", from: eth.accounts[0], value: 25000})
+web3.eth.chainId()
+personal.listAccounts[0]
+eth.Accounts()
+eth.accounts
+miner.start()
+web3.fromWei(eth.getBalance(eth.coinbase),"ether")
+miner.start()
+web3.fromWei(eth.getBalance(eth.coinbase),"ether")
+miner.start()
+web3.fromWei(eth.getBalance(eth.coinbase),"ether")
+miner.stop()
+miner.start()

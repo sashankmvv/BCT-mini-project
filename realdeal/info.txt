@@ -1,0 +1,21 @@
+pass-node1
+0xa8904c66192393647D8b0EADD89a66f65F32a5AE
+
+pass-node2
+0x4D02A5534B2b0362fA720abCB2D139887028b7Bc
+
+enode://7a51b6676495082cda0d55cbccecadb6663e00e52270b458c6158859391f972187b2dedf9c9ba3dd5297c2a467e4f902b5dd58c01039f78ff05aaed418024cc2@127.0.0.1:0?discport=3030
+
+
+bootnode -nodekey boot.key -addr :30305
+
+geth --datadir node1 --port 30306 --http.api "eth,net,web3,personal,miner" --bootnodes  enode://7a51b6676495082cda0d55cbccecadb6663e00e52270b458c6158859391f972187b2dedf9c9ba3dd5297c2a467e4f902b5dd58c01039f78ff05aaed418024cc2@127.0.0.1:0?discport=30305 --networkid 81699 --http.corsdomain=* --http.vhosts=* --unlock 0xa8904c66192393647D8b0EADD89a66f65F32a5AE --password node1/password.txt console
+
+
+geth --datadir node2 --port 30307 --bootnodes  enode://7a51b6676495082cda0d55cbccecadb6663e00e52270b458c6158859391f972187b2dedf9c9ba3dd5297c2a467e4f902b5dd58c01039f78ff05aaed418024cc2@127.0.0.1:0?discport=30305 --networkid 81699 --http.corsdomain=* --http.vhosts=* --unlock 0x4D02A5534B2b0362fA720abCB2D139887028b7Bc --password node2/password.txt -ipcdisable --authrpc.port 8547
+
+eth.sendTransaction({to: "0x4D02A5534B2b0362fA720abCB2D139887028b7Bc", from: eth.accounts[0], value: 25000})
+
+
+geth --datadir node1 --http --port 30306 --bootnodes  enode://7a51b6676495082cda0d55cbccecadb6663e00e52270b458c6158859391f972187b2dedf9c9ba3dd5297c2a467e4f902b5dd58c01039f78ff05aaed418024cc2@127.0.0.1:0?discport=30305 --networkid 81699 --http.corsdomain="https://remix.ethereum.org,chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html" --http.vhosts=* --unlock 0xa8904c66192393647D8b0EADD89a66f65F32a5AE --password node1/password.txt console
+geth --datadir node2 --http --port 30307 --bootnodes  enode://7a51b6676495082cda0d55cbccecadb6663e00e52270b458c6158859391f972187b2dedf9c9ba3dd5297c2a467e4f902b5dd58c01039f78ff05aaed418024cc2@127.0.0.1:0?discport=30305 --networkid 81699 --http.corsdomain="https://remix.ethereum.org,chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html" --http.vhosts=* --unlock 0x4D02A5534B2b0362fA720abCB2D139887028b7Bc --password node2/password.txt -ipcdisable --authrpc.port 8547
